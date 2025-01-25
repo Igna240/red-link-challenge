@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class BankTransactionRequest implements TransactionRequest{
+public class BankTransactionRequest extends TransactionRequest{
 
     private String userId;
     private double amount;

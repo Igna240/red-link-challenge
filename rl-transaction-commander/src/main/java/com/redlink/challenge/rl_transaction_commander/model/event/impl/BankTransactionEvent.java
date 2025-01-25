@@ -5,4 +5,9 @@ import com.redlink.challenge.rl_transaction_commander.model.event.Event;
 public class BankTransactionEvent implements Event {
 
     private String type;
+
+    @Override
+    public String getEventType() {
+        return "bankTransaction";
+    }
 }

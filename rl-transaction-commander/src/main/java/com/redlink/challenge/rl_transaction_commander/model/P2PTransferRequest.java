@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class P2PTransferRequest implements TransactionRequest{
+public class P2PTransferRequest extends TransactionRequest{
 
     private String senderId;
     private String recipientId;

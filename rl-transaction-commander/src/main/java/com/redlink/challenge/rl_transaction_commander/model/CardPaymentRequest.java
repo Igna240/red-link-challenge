@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class CardPaymentRequest implements TransactionRequest{
+public class CardPaymentRequest extends TransactionRequest{
 
     private String cardId;
     private String userId;
