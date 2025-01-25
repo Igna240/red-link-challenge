@@ -16,7 +16,7 @@ public class CardPaymentCommand implements TransactionCommand<CardPaymentRequest
 
     @Override
     public void processRequest(CardPaymentRequest request) {
-        log.info("process card payment event");
-        producerService.sendMessage(CardPaymentEvent.builder().type(request.getCardId()).build());
+        log.info("process card payment event" + request.getCardId());
+        producerService.sendMessage(CardPaymentEvent.builder().test(request.getCardId()).build());
     }
 }
