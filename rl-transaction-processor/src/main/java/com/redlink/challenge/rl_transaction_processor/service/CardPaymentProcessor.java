@@ -1,6 +1,6 @@
 package com.redlink.challenge.rl_transaction_processor.service;
 
-import com.redlink.challenge.rl_transaction_processor.model.event.CardPaymentEvent;
+import com.redlink.challenge.rl_transaction_processor.model.event.impl.CardPaymentEvent;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +10,7 @@ public class CardPaymentProcessor implements EventProcessor<CardPaymentEvent> {
 
     @Override
     public void process(CardPaymentEvent event) {
+        log.info(event.getEventType());
         log.info("event saved");
     }
 }
