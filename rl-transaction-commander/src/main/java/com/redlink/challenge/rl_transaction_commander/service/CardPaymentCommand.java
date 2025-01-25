@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -15,8 +17,23 @@ public class CardPaymentCommand implements TransactionCommand<CardPaymentRequest
     private final KafkaProducerService producerService;
 
     @Override
-    public void processRequest(CardPaymentRequest request) {
-        log.info("process card payment event" + request.getCardId());
-        producerService.sendMessage(CardPaymentEvent.builder().test(request.getCardId()).build());
+    public String processRequest(CardPaymentRequest request) {
+        CardPaymentEvent cardPaymentEvent = CardPaymentEvent.builder()
+                .correlationId(UUID.randomUUID().toString())
+                .cardId(request.getCardId())
+                .userId(request.getUserId())
+                .amount(request.getAmount())
+                .currency(request.getCurrency())
+                .status(request.getStatus())
+                .createdAt(request.getCreatedAt())
+                .merchant(CardPaymentEvent.Merchant.builder()
+                        .name(request.getMerchant().getName())
+                        .merchantId(request.getMerchant().getMerchantId())
+                        .build())
+                .mccCode(request.getMccCode())
+                .build();
+        producerService.sendMessage(cardPaymentEvent);
+
+        return cardPaymentEvent.getCorrelationId();
     }
 }

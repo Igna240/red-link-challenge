@@ -3,6 +3,7 @@ package com.redlink.challenge.rl_transaction_commander.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.redlink.challenge.rl_transaction_commander.model.BankTransactionRequest;
 import com.redlink.challenge.rl_transaction_commander.model.CardPaymentRequest;
+import com.redlink.challenge.rl_transaction_commander.model.P2PTransferRequest;
 import com.redlink.challenge.rl_transaction_commander.model.TransactionRequest;
 import com.redlink.challenge.rl_transaction_commander.service.BankTransactionCommand;
 import com.redlink.challenge.rl_transaction_commander.service.CardPaymentCommand;
@@ -38,9 +39,9 @@ public class TransactionController {
             @RequestBody CardPaymentRequest body
             ){
 
-        cardPaymentCommand.processRequest(body);
+        return new ResponseEntity<>( "Transaction processed, correlationId: "
+                + cardPaymentCommand.processRequest(body), HttpStatus.OK);
 
-        return new ResponseEntity<>("Transaction processed", HttpStatus.OK);
     }
 
     @PostMapping("/bank")
@@ -55,7 +56,7 @@ public class TransactionController {
 
     @PostMapping("/p2p")
     public ResponseEntity<String> createP2PTransaction(
-            @RequestBody BankTransactionRequest body
+            @RequestBody P2PTransferRequest body
     ){
 
         p2PTransferCommand.processRequest(body);

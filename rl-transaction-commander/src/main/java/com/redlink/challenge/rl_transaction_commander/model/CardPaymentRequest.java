@@ -3,13 +3,15 @@ package com.redlink.challenge.rl_transaction_commander.model;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.math.BigDecimal;
+
 @AllArgsConstructor
 @Getter
 public class CardPaymentRequest extends TransactionRequest{
 
     private String cardId;
     private String userId;
-    private double amount;
+    private BigDecimal amount;
     private String currency;
     private String status;
     private String createdAt;
@@ -18,6 +20,7 @@ public class CardPaymentRequest extends TransactionRequest{
 
 
     @Getter
+    @AllArgsConstructor
     public static class Merchant {
         private String name;
         private String merchantId;
