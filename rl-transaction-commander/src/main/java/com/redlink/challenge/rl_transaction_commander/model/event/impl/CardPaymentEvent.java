@@ -33,7 +33,7 @@ public class CardPaymentEvent implements Event {
     public record Merchant (
             String name,
             String merchantId
-    ) { }
+    ) {}
 
     @Override
     public String getEventType() {

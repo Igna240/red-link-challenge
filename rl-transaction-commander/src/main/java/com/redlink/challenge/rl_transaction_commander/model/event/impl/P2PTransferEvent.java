@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Builder
@@ -18,7 +19,7 @@ public class P2PTransferEvent implements Event {
 
     private String senderId;
     private String recipientId;
-    private double amount;
+    private BigDecimal amount;
     private String currency;
     private String status;
     private LocalDateTime createdAt;
