@@ -23,7 +23,7 @@ This project implements a microservices architecture to handle banking transacti
 
 ## Architecture
 
-![Project Architecture](link_to_architecture_diagram.png)
+![Project Architecture](https://github.com/Igna240/red-link-challenge/blob/main/diagrams/software-architecture-cqrs.png?raw=true)
 
 The system is composed of the following microservices:
 
