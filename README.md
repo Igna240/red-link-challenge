@@ -8,11 +8,8 @@ This project consists of a set of microservices designed to manage banking trans
 - [Architecture](#architecture)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Microservices](#microservices)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+- [Curls](#contact)
 
 ## Overview
 
@@ -47,3 +44,24 @@ The system is composed of the following microservices:
    git clone https://github.com/Igna240/red-link-challenge.git
    cd red-link-challeng
    docket-compose up -d
+
+## Curls
+
+```bash
+curl --location 'http://localhost:8090/api/transactions/card' \
+--header 'Transaction-Type: bank' \
+--header 'Content-Type: application/json' \
+--data '{
+ "cardId": "43211234",
+ "userId": "113411",
+ "amount": 100,
+ "currency": "USD",
+ "status": "COMPLETED",
+ "createdAt": "2024-10-15T10:20:00Z",
+ "merchant": {
+ "name": "Amazon",
+ "merchantId": "12309"
+ },
+ "mcc_code": 5411
+}'
+  
