@@ -35,6 +35,7 @@ The system is composed of the following microservices:
 ## Prerequisites
 
 - Docker
+- Maven
 
 ## Installation
 
@@ -42,7 +43,15 @@ The system is composed of the following microservices:
 
    ```bash
    git clone https://github.com/Igna240/red-link-challenge.git
-   cd red-link-challeng
+   cd red-link-challenge
+
+2. Generate .jar files of ´rl-transaction-commander´ and ´rl-transaction-processor´ Microservices
+   ```bash
+   cd rl-transaction-commander
+   mvn clean package
+
+3. run docker-compose
+   ```bash
    docket-compose up -d
 
 ## Curls
